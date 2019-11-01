@@ -13,7 +13,7 @@ Status](https://api.travis-ci.org/thomascrines/admStructuredData.svg?branch=mast
 <!-- badges: end -->
 
 admStructuredData is an R package which allows SG analysts to upload
-data from Excel workbooks to the [Analytical Data Management](http://data.saltire/Pages/Analytical-Data-Management.aspx) (ADM)
+data from Excel workbooks to the Analytical Data Management (ADM)
 structured data repository.
 
 Data can be uploaded from a single worksheet, from all worksheets in a
@@ -21,11 +21,11 @@ workbook, or from all workbooks in a folder.
 
 To use the package you will need to have access to a database in the ADM
 structured data repository; if you don’t have this please contact the
-[ADM support team](mailto:adm.support@gov.scot).
+ADM support team.
 
 ## Installation
 
-Install opendatascot from GitHub with:
+Install admStructuredData from GitHub with:
 
 ``` r
 # install.packages("devtools")
@@ -34,7 +34,7 @@ devtools::install_github("thomascrines/admStructuredData")
 
 If the above does not work, you can install from source:
 
-1.  Go to the sdrUpload
+1.  Go to the admStructuredData
     [repository](https://github.com/thomascrines/admStructuredData) on
     GitHub
 2.  Click **Clone or download** then **Download ZIP**
@@ -53,7 +53,7 @@ install.packages("C:\\DownloadDirectory\\admStructuredData-master\\admStructured
 
 To use admStructuredData you will need to have access to a database in
 the ADM structured data repository; if you don’t have this please
-contact the [ADM support team](mailto:adm.support@gov.scot). Most
+contact the ADM support team. Most
 functions will require ‘database’ and ‘server’ arguments; the values for
 these will be provided by the ADM team when your database is set up.
 
@@ -64,29 +64,29 @@ To use this feature, the archive folder has to be made in advance.
 
 Write data from an Excel worksheet to a database table:
 `adm_worksheet_to_db(database = "DatabaseName", server = "ServerName",
-file_path = "C:\\Temp\\Sdr\\ExcelFile.xlsx", worksheet =
+file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx", worksheet =
 "WorksheetName")`
 
 Write data all Excel sheets contained in an Excel workbook to database
 tables: `adm_workbook_to_db(database = "DatabaseName", server =
-"ServerName\\Instance", file_path = "C:\\Temp\\Sdr\\ExcelFile.xlsx")`
+"ServerName\\Instance", file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx")`
 
-sdr\_process\_workbook can also accept an archive argument, to move the
+adm\_workbook\_to\_db can also accept an archive argument, to move the
 processed file from the original location to a specified directory:
 `adm_workbook_to_db(database = "DatabaseName", server =
-"ServerName\\Instance"file_path = "C:\\Temp\\Sdr\\ExcelFile.xlsx",
-archive = "C:\\Temp\\Sdr\\ArchiveFolder\\")`
+"ServerName\\Instance"file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx",
+archive = "C:\\Temp\\ADM\\ArchiveFolder\\")`
 
 Write data from all Excel sheets contained in all Excel files contained
 in a source directory to database tables: `adm_folder_to_db(database =
 "DatabaseName", server = "ServerName\\Instance", file_path =
-"C:\\Temp\\Sdr\\ExcelFile.xlsx")`
+"C:\\Temp\\ADM\\ExcelFile.xlsx")`
 
-sdr\_process\_folder can also accept an archive argument, to move
+adm\_folder\_to\_db can also accept an archive argument, to move
 processed files from the original location to a specified directory:
 `adm_folder_to_db(database = "DatabaseName", server =
-"ServerName\\Instance", file_path = "C:\\Temp\\Sdr\\ExcelFile.xlsx",
-archive = "C:\\Temp\\Sdr\\ArchiveFolder\\")`
+"ServerName\\Instance", file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx",
+archive = "C:\\Temp\\ADM\\ArchiveFolder\\")`
 
 Delete a table from a database: `adm_delete_table(database =
 "DatabaseName", server = "ServerName", table = "TableName")`
