@@ -16,8 +16,8 @@ admStructuredData is an R package which allows SG analysts to upload
 data from Excel workbooks to the [Analytical Data Management](http://data.saltire/Pages/Analytical-Data-Management.aspx) (ADM)
 structured data repository.
 
-Data can be uploaded from a single worksheet, all worksheets in a
-workbook, or all workbooks in a folder.
+Data can be uploaded from a single worksheet, from all worksheets in a
+workbook, or from all workbooks in a folder.
 
 To use the package you will need to have access to a database in the ADM
 structured data repository; if you don’t have this please contact the
