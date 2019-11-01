@@ -62,39 +62,42 @@ To use this feature, the archive folder has to be made in advance.
 
 ## Examples
 
-Write data from an Excel worksheet to a database table:
+Write data from an Excel worksheet to a database table:  
 `adm_worksheet_to_db(database = "DatabaseName", server = "ServerName",
 file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx", worksheet =
 "WorksheetName")`
 
 Write data all Excel sheets contained in an Excel workbook to database
-tables: 
+tables:  
 `adm_workbook_to_db(database = "DatabaseName", server =
 "ServerName\\Instance", file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx")`
 
 adm\_workbook\_to\_db can also accept an archive argument, to move the
-processed file from the original location to a specified directory:
+processed file from the original location to a specified directory:  
 `adm_workbook_to_db(database = "DatabaseName", server =
 "ServerName\\Instance"file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx",
 archive = "C:\\Temp\\ADM\\ArchiveFolder\\")`
 
 Write data from all Excel sheets contained in all Excel files contained
-in a source directory to database tables: 
+in a source directory to database tables:  
 `adm_folder_to_db(database =
 "DatabaseName", server = "ServerName\\Instance", file_path =
 "C:\\Temp\\ADM\\ExcelFile.xlsx")`
 
 adm\_folder\_to\_db can also accept an archive argument, to move
-processed files from the original location to a specified directory:
+processed files from the original location to a specified directory:  
 `adm_folder_to_db(database = "DatabaseName", server =
 "ServerName\\Instance", file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx",
 archive = "C:\\Temp\\ADM\\ArchiveFolder\\")`
 
-Delete a table from a database: `adm_delete_table(database =
+Delete a table from a database:  
+`adm_delete_table(database =
 "DatabaseName", server = "ServerName", table = "TableName")`
 
-Return a list of tables in a database: `adm_list_tables(database =
+Return a list of tables in a database:  
+`adm_list_tables(database =
 "DatabaseName", server = "DatabaseServer")`
 
-Return data from a database table: `adm_read_table(database =
+Return data from a database table:  
+`adm_read_table(database =
 "DatabaseName", server = "ServerName", table = "TableName")`
