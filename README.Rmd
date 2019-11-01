@@ -79,3 +79,7 @@ Return a list of tables in a database:
 
 Return data from a database table:
 `adm_read_table(database = "DatabaseName", server = "ServerName", table = "TableName")`
+
+Future Development
+---------
+This package is currently under active development; feel free to add issues to this repo or contact the [ADM support team](mailto:adm.support@gov.scot) with any suggestions/problems.
