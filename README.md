@@ -62,8 +62,6 @@ To use this feature, the archive folder has to be made in advance.
 
 ## Examples
 
-The following examples are….
-
 Write data from an Excel worksheet to a database table:
 `adm_worksheet_to_db(database = "DatabaseName", server = "ServerName",
 file_path = "C:\\Temp\\Sdr\\ExcelFile.xlsx", worksheet =
