@@ -68,7 +68,8 @@ file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx", worksheet =
 "WorksheetName")`
 
 Write data all Excel sheets contained in an Excel workbook to database
-tables: `adm_workbook_to_db(database = "DatabaseName", server =
+tables: 
+`adm_workbook_to_db(database = "DatabaseName", server =
 "ServerName\\Instance", file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx")`
 
 adm\_workbook\_to\_db can also accept an archive argument, to move the
@@ -78,7 +79,8 @@ processed file from the original location to a specified directory:
 archive = "C:\\Temp\\ADM\\ArchiveFolder\\")`
 
 Write data from all Excel sheets contained in all Excel files contained
-in a source directory to database tables: `adm_folder_to_db(database =
+in a source directory to database tables: 
+`adm_folder_to_db(database =
 "DatabaseName", server = "ServerName\\Instance", file_path =
 "C:\\Temp\\ADM\\ExcelFile.xlsx")`
 
