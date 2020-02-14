@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# admStructuredData
+# sdrUpload
 
 <!-- badges: start -->
 
@@ -16,16 +16,16 @@ admStructuredData is an R package which allows SG analysts to upload
 data from Excel workbooks to the Analytical Data Management (ADM)
 structured data repository.
 
-Data can be uploaded from a single worksheet, from all worksheets in a
-workbook, or from all workbooks in a folder.
+Data can be uploaded from a single worksheet, all worksheets in a
+workbook, or all workbooks in a folder.
 
 To use the package you will need to have access to a database in the ADM
 structured data repository; if you don’t have this please contact the
-ADM support team.
+[ADM support team](mailto:adm.support@gov.scot).
 
 ## Installation
 
-Install admStructuredData from GitHub with:
+Install opendatascot from GitHub with:
 
 ``` r
 # install.packages("devtools")
@@ -34,7 +34,7 @@ devtools::install_github("thomascrines/admStructuredData")
 
 If the above does not work, you can install from source:
 
-1.  Go to the admStructuredData
+1.  Go to the sdrUpload
     [repository](https://github.com/thomascrines/admStructuredData) on
     GitHub
 2.  Click **Clone or download** then **Download ZIP**
@@ -53,7 +53,7 @@ install.packages("C:\\DownloadDirectory\\admStructuredData-master\\admStructured
 
 To use admStructuredData you will need to have access to a database in
 the ADM structured data repository; if you don’t have this please
-contact the ADM support team. Most
+contact the [ADM support team](mailto:adm.support@gov.scot). Most
 functions will require ‘database’ and ‘server’ arguments; the values for
 these will be provided by the ADM team when your database is set up.
 
@@ -62,42 +62,80 @@ To use this feature, the archive folder has to be made in advance.
 
 ## Examples
 
-Write data from an Excel worksheet to a database table:  
+### Write data to database
+
+Write an R dataframe to a database table:
+
+`adm_dataframe_to_db(database = "DatabaseName", server = "ServerName",
+database_table_name = "example_database_table", dataframe =
+example_dataframe)`
+
+Write data from an Excel worksheet to a database table:
+
 `adm_worksheet_to_db(database = "DatabaseName", server = "ServerName",
-file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx", worksheet =
+file_path = "C:\\Temp\\Sdr\\ExcelFile.xlsx", worksheet =
 "WorksheetName")`
 
 Write data all Excel sheets contained in an Excel workbook to database
-tables:  
-`adm_workbook_to_db(database = "DatabaseName", server =
-"ServerName\\Instance", file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx")`
+tables:
 
-adm\_workbook\_to\_db can also accept an archive argument, to move the
-processed file from the original location to a specified directory:  
 `adm_workbook_to_db(database = "DatabaseName", server =
-"ServerName\\Instance"file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx",
-archive = "C:\\Temp\\ADM\\ArchiveFolder\\")`
+"ServerName\\Instance", file_path = "C:\\Temp\\Sdr\\ExcelFile.xlsx")`
 
 Write data from all Excel sheets contained in all Excel files contained
-in a source directory to database tables:  
-`adm_folder_to_db(database =
-"DatabaseName", server = "ServerName\\Instance", file_path =
-"C:\\Temp\\ADM\\ExcelFile.xlsx")`
+in a source directory to database tables:
 
-adm\_folder\_to\_db can also accept an archive argument, to move
-processed files from the original location to a specified directory:  
 `adm_folder_to_db(database = "DatabaseName", server =
-"ServerName\\Instance", file_path = "C:\\Temp\\ADM\\ExcelFile.xlsx",
-archive = "C:\\Temp\\ADM\\ArchiveFolder\\")`
+"ServerName\\Instance", file_path = "C:\\Temp\\Sdr\\ExcelFile.xlsx")`
 
-Delete a table from a database:  
-`adm_delete_table(database =
-"DatabaseName", server = "ServerName", table = "TableName")`
+### Other database functions
 
-Return a list of tables in a database:  
-`adm_list_tables(database =
-"DatabaseName", server = "DatabaseServer")`
+Delete a table from a database:
 
-Return data from a database table:  
-`adm_read_table(database =
-"DatabaseName", server = "ServerName", table = "TableName")`
+`adm_delete_table(database = "DatabaseName", server = "ServerName",
+table = "TableName")`
+
+Return a list of tables in a database:
+
+`adm_list_tables(database = "DatabaseName", server = "DatabaseServer")`
+
+Return data from a database table:
+
+`adm_read_table(database = "DatabaseName", server = "ServerName", table
+= "TableName")`
+
+### Append / overwrite arguments
+
+`adm_dataframe_to_db()`, `adm_worksheet_to_db()`, `adm_workbook_to_db()`
+and `adm_folder_to_db()` all accept `append` and `overwrite` arguments.
+These are optional, but if neither is set an error will be thrown if the
+database table already exists. Only one can be set to `TRUE` at a time
+or an error will be thrown.
+
+Append:
+
+`adm_dataframe_to_db(database = "DatabaseName", server = "ServerName",
+database_table_name = "example_database_table", dataframe =
+example_dataframe, append = TRUE)`
+
+Overwrite:
+
+`adm_dataframe_to_db(database = "DatabaseName", server = "ServerName",
+database_table_name = "example_database_table", dataframe =
+example_dataframe, overwrite = TRUE)`
+
+### Archive argument
+
+`adm_worksheet_to_db()` and `adm_workbook_to_db()` can also accept an
+archive argument, to move processed files from the original location to
+a specified directory:
+
+`adm_folder_to_db(database = "DatabaseName", server =
+"ServerName\\Instance", file_path = "C:\\Temp\\Sdr\\ExcelFile.xlsx",
+archive = "C:\\Temp\\Sdr\\ArchiveFolder\\")`
+
+## Future Development
+
+This package is currently under active development; feel free to add
+issues to this repo or contact the [ADM support
+team](mailto:adm.support@gov.scot) with any suggestions/problems.
