@@ -5,6 +5,8 @@
 #' @param database \code{string}. The name of the database to write the file to.
 #' @param server \code{string}. The name of the server containing the database.
 #' @param file_path \code{string}. The full path of the file to process.
+#' @param append \code{string}. Default: \code{false}. Whether to append worksheets to existing tables with the same name.
+#' @param overwrite \code{string}. Default: \code{false}. Whether to overwrite existing tables with worksheets with the same name.
 #' @param archive \code{string}. Optional. The path of the directory to move the processed file to.
 
 #'
@@ -21,7 +23,7 @@
 #'
 #' @export
 
-adm_workbook_to_db <- function(database, server, file_path, archive = NULL) {
+adm_workbook_to_db <- function(database, server, file_path, append = FALSE, overwrite = FALSE, archive = NULL) {
 
   file_name <- basename(file_path)
   source <- dirname(file_path)
@@ -32,7 +34,7 @@ adm_workbook_to_db <- function(database, server, file_path, archive = NULL) {
 
   for (worksheet in worksheets) {
 
-    admStructuredData:::adm_worksheet_to_db(database = database, server = server, file_path = file_path, worksheet = worksheet)
+    admStructuredData:::adm_worksheet_to_db(database = database, server = server, file_path = file_path, worksheet = worksheet, append = append, overwrite = overwrite)
 
   }
 
