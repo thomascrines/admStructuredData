@@ -4,7 +4,8 @@
 \alias{adm_folder_to_db}
 \title{Upload all Excel worksheets in a folder to SDR}
 \usage{
-adm_folder_to_db(database, server, source, archive = NULL)
+adm_folder_to_db(database, server, source, append = FALSE,
+  overwrite = FALSE, archive = NULL)
 }
 \arguments{
 \item{database}{\code{string}. The database to write the data to.}
@@ -12,6 +13,10 @@ adm_folder_to_db(database, server, source, archive = NULL)
 \item{server}{\code{string}. The server holding the database.}
 
 \item{source}{\code{string}. The path of the directory containing Excel files.}
+
+\item{append}{\code{string}. Default: \code{false}. Whether to append worksheets to existing tables with the same name.}
+
+\item{overwrite}{\code{string}. Default: \code{false}. Whether to overwrite existing tables with worksheets with the same name.}
 
 \item{archive}{\code{string}. The path of the directory to send processed files to.}
 }

@@ -4,7 +4,8 @@
 \alias{adm_workbook_to_db}
 \title{Process files to write to SQL Server database}
 \usage{
-adm_workbook_to_db(database, server, file_path, archive = NULL)
+adm_workbook_to_db(database, server, file_path, append = FALSE,
+  overwrite = FALSE, archive = NULL)
 }
 \arguments{
 \item{database}{\code{string}. The name of the database to write the file to.}
@@ -12,6 +13,10 @@ adm_workbook_to_db(database, server, file_path, archive = NULL)
 \item{server}{\code{string}. The name of the server containing the database.}
 
 \item{file_path}{\code{string}. The full path of the file to process.}
+
+\item{append}{\code{string}. Default: \code{false}. Whether to append worksheets to existing tables with the same name.}
+
+\item{overwrite}{\code{string}. Default: \code{false}. Whether to overwrite existing tables with worksheets with the same name.}
 
 \item{archive}{\code{string}. Optional. The path of the directory to move the processed file to.}
 }

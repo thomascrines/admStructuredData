@@ -4,7 +4,8 @@
 \alias{adm_worksheet_to_db}
 \title{Process worksheet from Excel file to write to SQL Server database}
 \usage{
-adm_worksheet_to_db(database, server, file_path, worksheet)
+adm_worksheet_to_db(database, server, file_path, worksheet,
+  overwrite = FALSE, append = FALSE)
 }
 \arguments{
 \item{database}{\code{string}. The name of the database to write the sheet to.}
@@ -14,12 +15,16 @@ adm_worksheet_to_db(database, server, file_path, worksheet)
 \item{file_path}{\code{string}. The full path of the file containing the worksheet.}
 
 \item{worksheet}{\code{string}. The name of the worksheet to be processed.}
+
+\item{overwrite}{\code{string}. Default: \code{false}. Whether to overwrite existing table with worksheet with the same name.}
+
+\item{append}{\code{string}. Default: \code{false}. Whether to append worksheet to existing table with the same name.}
 }
 \value{
 \code{null}
 }
 \description{
-\code{adm_worksheet_to_db} is an internal function that processes an Excel worksheet to be written to a SQL Server database.
+\code{adm_worksheet_to_db} writes an Excel worksheet to a SQL Server database.
 }
 \examples{
 
