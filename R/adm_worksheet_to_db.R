@@ -1,6 +1,6 @@
 #' Process worksheet from Excel file to write to SQL Server database
 #'
-#' \code{adm_worksheet_to_db} is an internal function that processes an Excel worksheet to be written to a SQL Server database.
+#' \code{adm_worksheet_to_db} writes an Excel worksheet to a SQL Server database.
 #'
 #' @param database \code{string}. The name of the database to write the sheet to.
 #' @param server \code{string}. The name of the server containing the database.
