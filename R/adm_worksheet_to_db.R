@@ -6,7 +6,8 @@
 #' @param server \code{string}. The name of the server containing the database.
 #' @param file_path \code{string}. The full path of the file containing the worksheet.
 #' @param worksheet \code{string}. The name of the worksheet to be processed.
-
+#' @param append \code{string}. Default: \code{false}. Whether to append worksheet to existing table with the same name.
+#' @param overwrite \code{string}. Default: \code{false}. Whether to overwrite existing table with worksheet with the same name.
 #'
 #' @return \code{null}
 #'
@@ -18,7 +19,7 @@
 #'
 #' @export
 
-adm_worksheet_to_db <- function(database, server, file_path, worksheet) {
+adm_worksheet_to_db <- function(database, server, file_path, worksheet, overwrite = FALSE, append = FALSE) {
 
   file_name <- basename(file_path)
   df <- readxl::read_excel(file_path, sheet = worksheet)
@@ -27,7 +28,7 @@ adm_worksheet_to_db <- function(database, server, file_path, worksheet) {
 
   tryCatch({
 
-    DBI::dbWriteTable(connection, name = database_table_name, value = df, overwrite = TRUE)
+    DBI::dbWriteTable(connection, name = database_table_name, value = df, overwrite = overwrite, append = append)
     message(paste0("Excel worksheet: '", worksheet, "' successfully written to: '", database_table_name, "'"))
 
   }, error = function(cond) {
