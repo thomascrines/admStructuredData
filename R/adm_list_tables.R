@@ -24,6 +24,6 @@ adm_list_tables <- function(database, server) {
 
   DBI::dbDisconnect(connection)
 
-  data
+  data$TABLE_NAME
 
 }
