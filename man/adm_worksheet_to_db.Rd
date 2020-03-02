@@ -4,8 +4,14 @@
 \alias{adm_worksheet_to_db}
 \title{Process worksheet from Excel file to write to SQL Server database}
 \usage{
-adm_worksheet_to_db(database, server, file_path, worksheet,
-  overwrite = FALSE, append = FALSE)
+adm_worksheet_to_db(
+  database,
+  server,
+  file_path,
+  worksheet,
+  overwrite = FALSE,
+  append = FALSE
+)
 }
 \arguments{
 \item{database}{\code{string}. The name of the database to write the sheet to.}

@@ -4,8 +4,14 @@
 \alias{adm_workbook_to_db}
 \title{Process files to write to SQL Server database}
 \usage{
-adm_workbook_to_db(database, server, file_path, append = FALSE,
-  overwrite = FALSE, archive = NULL)
+adm_workbook_to_db(
+  database,
+  server,
+  file_path,
+  append = FALSE,
+  overwrite = FALSE,
+  archive = NULL
+)
 }
 \arguments{
 \item{database}{\code{string}. The name of the database to write the file to.}
