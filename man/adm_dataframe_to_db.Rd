@@ -4,8 +4,14 @@
 \alias{adm_dataframe_to_db}
 \title{Write dataframe to SQL Server database}
 \usage{
-adm_dataframe_to_db(database, server, database_table_name, dataframe,
-  overwrite = FALSE, append = FALSE)
+adm_dataframe_to_db(
+  database,
+  server,
+  database_table_name,
+  dataframe,
+  overwrite = FALSE,
+  append = FALSE
+)
 }
 \arguments{
 \item{database}{\code{string}. The name of the database to write the sheet to.}

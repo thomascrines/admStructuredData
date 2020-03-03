@@ -7,7 +7,7 @@ Description: Upload Excel workbooks to SDR
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Depends: readxl, odbc, DBI
 Suggests: knitr
 Language: en-GB

@@ -134,6 +134,19 @@ a specified directory:
 "ServerName\\Instance", file_path = "C:\\Temp\\Sdr\\ExcelFile.xlsx",
 archive = "C:\\Temp\\Sdr\\ArchiveFolder\\")`
 
+### Metadata
+
+Return metadata for all tables in a database (table name, number of
+rows, size (in KB), and last schema update):
+
+`adm_table_metadata(database = "DatabaseName", server = "ServerName")`
+
+Return metadata for all columns in a table (column name, data type, null
+count, distinct values count, minimum value, and maximum value):
+
+`adm_column_metadata(database = "DatabaseName", server = "ServerName",
+table = "TableName")`
+
 ## Future Development
 
 This package is currently under active development; feel free to add

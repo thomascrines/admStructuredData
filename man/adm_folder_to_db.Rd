@@ -4,8 +4,14 @@
 \alias{adm_folder_to_db}
 \title{Upload all Excel worksheets in a folder to SDR}
 \usage{
-adm_folder_to_db(database, server, source, append = FALSE,
-  overwrite = FALSE, archive = NULL)
+adm_folder_to_db(
+  database,
+  server,
+  source,
+  append = FALSE,
+  overwrite = FALSE,
+  archive = NULL
+)
 }
 \arguments{
 \item{database}{\code{string}. The database to write the data to.}
