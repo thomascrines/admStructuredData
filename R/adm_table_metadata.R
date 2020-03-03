@@ -16,9 +16,9 @@
 #' @export
 
 adm_table_metadata <- function(database, server) {
-  
+
   connection <- admStructuredData:::adm_create_connection(database = database, server = server)
-  
+
   table_query <- "SET NOCOUNT ON;
 
                  SELECT	t.name AS 'TableName',
@@ -37,10 +37,10 @@ adm_table_metadata <- function(database, server) {
                  p.Rows,
                  t.modify_date
                  ORDER BY 'TableName';"
-  
+
   table_metadata <- DBI::dbGetQuery(connection, table_query)
-  
+
   DBI::dbDisconnect(connection)
-  
+
   return(table_metadata)
 }

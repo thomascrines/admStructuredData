@@ -16,7 +16,7 @@
 #'
 #' @export
 
-adm_delete_table <- function(database, server, table){
+adm_delete_table <- function(database, server, table) {
 
   connection <- admStructuredData:::adm_create_connection(database = database, server = server)
 
@@ -24,7 +24,7 @@ adm_delete_table <- function(database, server, table){
 
     odbc::dbRemoveTable(conn = connection, name = table)
 
-  }, error = function(cond){
+  }, error = function(cond) {
 
     stop(paste0("Failed to delete table: '", table, "' from database: '", database, "' on server: '", server, "'\nOriginal error message: ", cond))
 

@@ -22,10 +22,10 @@ adm_create_connection <- function(database, server) {
   tryCatch({
 
     odbc::dbConnect(odbc::odbc(),
-                    Driver="SQL Server",
-                    Trusted_Connection="True",
-                    DATABASE=database,
-                    SERVER=server)},
+                    Driver = "SQL Server",
+                    Trusted_Connection = "True",
+                    DATABASE = database,
+                    SERVER = server)},
 
     error = function(cond) {
 
