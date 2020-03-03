@@ -4,6 +4,7 @@
 #'
 #' @param database \code{string}. The database to get metadata data for.
 #' @param server \code{string}. The server holding the database.
+#' @param table \code{string}. The table to get metadata data for.
 #'
 #' @return \code{dataframe}
 #'
