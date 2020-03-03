@@ -10,6 +10,8 @@ adm_column_metadata(database, server, table)
 \item{database}{\code{string}. The database to get metadata data for.}
 
 \item{server}{\code{string}. The server holding the database.}
+
+\item{table}{\code{string}. The table to get metadata data for.}
 }
 \value{
 \code{dataframe}
