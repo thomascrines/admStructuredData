@@ -19,7 +19,24 @@ adm_table_metadata <- function(database, server) {
   
   connection <- admStructuredData:::adm_create_connection(database = database, server = server)
   
-  table_query <- "EXECUTE [dbo].[table_profile]"
+  table_query <- "SET NOCOUNT ON;
+
+                 SELECT	t.name AS 'TableName',
+                 p.rows AS 'NumberOfRows',
+                 SUM(a.used_pages) * 8 AS 'Size(KB)',
+                 t.modify_date AS 'LastSchemaUpdate'
+                 FROM sys.tables t
+                 INNER JOIN sys.indexes i
+                 ON t.OBJECT_ID = i.object_id
+                 INNER JOIN sys.partitions p
+                 ON i.object_id = p.OBJECT_ID AND i.index_id = p.index_id
+                 INNER JOIN sys.allocation_units a
+                 ON p.partition_id = a.container_id
+                 WHERE	t.is_ms_shipped = 0
+                 GROUP BY	t.Name,
+                 p.Rows,
+                 t.modify_date
+                 ORDER BY 'TableName';"
   
   table_metadata <- DBI::dbGetQuery(connection, table_query)
   
