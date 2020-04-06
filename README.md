@@ -49,7 +49,7 @@ install.packages("C:\\DownloadDirectory\\admStructuredData-master\\admStructured
 ```
 
 Please see the [SG R/RStudio Instructions for
-users](https://erdm.scotland.gov.uk:8433/documents/A23744528/details)
+users](https://erdm.scotland.gov.uk:8443/documents/A23744528/details)
 before installing the package.
 
 The package will only work when installed on a SCOTS machine.
