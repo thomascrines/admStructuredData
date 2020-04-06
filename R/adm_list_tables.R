@@ -5,7 +5,7 @@
 #' @param database \code{string}. A SQL Server database name.
 #' @param server \code{string}. A SQL Server database server.
 #'
-#' @return \code{null}
+#' @return \code{dataframe}
 #'
 #' @examples
 #'
@@ -17,13 +17,16 @@
 
 adm_list_tables <- function(database, server) {
 
-  connection <- admStructuredData:::adm_create_connection(database = database, server = server)
-  query_string <- paste0("SELECT TABLE_NAME FROM ", database, ".INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'")
+  sql <- "SELECT SCHEMA_NAME(t.schema_id) AS 'Schema',
+  t.name AS 'Name',
+  CASE
+  WHEN t.temporal_type = 0 THEN 'Staging'
+  WHEN t.temporal_type = 2 THEN 'Version'
+  END AS 'TableType'
+  FROM sys.tables t
+  WHERE t.temporal_type != 1 AND SCHEMA_NAME(t.schema_id) != 'metadata'"
 
-  data <- DBI::dbGetQuery(connection, query_string)
+  data <- admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = TRUE)
 
-  DBI::dbDisconnect(connection)
-
-  data$TABLE_NAME
-
+  data
 }

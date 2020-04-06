@@ -1,6 +1,6 @@
 #' Process worksheet from Excel file to write to SQL Server database
 #'
-#' \code{adm_worksheet_to_db} writes an Excel worksheet to a SQL Server database.
+#' \code{adm_upload_worksheet} writes an Excel worksheet to a SQL Server database.
 #'
 #' @param database \code{string}. The name of the database to write the sheet to.
 #' @param server \code{string}. The name of the server containing the database.
@@ -14,17 +14,17 @@
 #' @examples
 #'
 #' \dontrun{
-#' adm_worksheet_to_db(database = "DatabaseName", server = "ServerName", file_path = "C:\\Temp\\ExcelFile.xlsx", worksheet = "WorksheetName")
+#' adm_upload_worksheet(database = "DatabaseName", server = "ServerName", file_path = "C:\\Temp\\ExcelFile.xlsx", worksheet = "WorksheetName")
 #' }
 #'
 #' @export
 
-adm_worksheet_to_db <- function(database, server, file_path, worksheet, overwrite = FALSE, append = FALSE) {
+adm_upload_worksheet <- function(database, server, file_path, worksheet, overwrite = FALSE, append = FALSE) {
 
   file_name <- basename(file_path)
   df <- readxl::read_excel(file_path, sheet = worksheet)
   database_table_name <- gsub(" ", "_", paste0(tolower(gsub("\\..*", "", file_name)), "_", tolower(worksheet)))
-  connection <- admStructuredData:::adm_create_connection(database = database, server = server)
+  connection <- admStructuredData:::adm_i_create_connection(database = database, server = server)
 
   tryCatch({
 

@@ -1,4 +1,4 @@
-#' Delete database table
+#' Delete a table in the 'dbo' schema from a database
 #'
 #' \code{adm_delete_table} opens an ODBC connection and deletes a specified table.
 #'
@@ -18,7 +18,7 @@
 
 adm_delete_table <- function(database, server, table) {
 
-  connection <- admStructuredData:::adm_create_connection(database = database, server = server)
+  connection <- admStructuredData:::adm_i_create_connection(database = database, server = server)
 
   tryCatch({
 

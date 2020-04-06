@@ -1,6 +1,6 @@
 #' Get table metadata
 #'
-#' \code{adm_table_metadata} returns details of all tables in a SQL Server database.
+#' \code{adm_metadata_tables} returns details of all tables in a SQL Server database.
 #'
 #' @param database \code{string}. The database to get metadata data for.
 #' @param server \code{string}. The server holding the database.
@@ -10,16 +10,16 @@
 #' @examples
 #'
 #' \dontrun{
-#' adm_table_metadata(database = "DatabaseName", server = "ServerName")
+#' adm_metadata_tables(database = "DatabaseName", server = "ServerName")
 #' }
 #'
 #' @export
 
-adm_table_metadata <- function(database, server) {
+adm_metadata_tables <- function(database, server) {
 
-  connection <- admStructuredData:::adm_create_connection(database = database, server = server)
+  connection <- admStructuredData:::adm_i_create_connection(database = database, server = server)
 
-  table_query <- "SET NOCOUNT ON;
+  sql <- "SET NOCOUNT ON;
 
                  SELECT	t.name AS 'TableName',
                  p.rows AS 'NumberOfRows',
@@ -38,9 +38,9 @@ adm_table_metadata <- function(database, server) {
                  t.modify_date
                  ORDER BY 'TableName';"
 
-  table_metadata <- DBI::dbGetQuery(connection, table_query)
+  table_metadata <- DBI::dbGetQuery(connection, sql)
 
   DBI::dbDisconnect(connection)
 
-  return(table_metadata)
+  table_metadata
 }
