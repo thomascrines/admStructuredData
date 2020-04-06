@@ -3,7 +3,7 @@
 #' \code{adm_i_archive_file} is an internal function that moves a file from a source directory to an archive directory.
 #'
 #' @param file_path \code{string}. The full path of the file to process.
-#' @param archive \code{string}. The path of the directory to send the file to.
+#' @param archive_directory_path \code{string}. The path of the directory to send the file to.
 #'
 #' @return \code{null}
 #'
