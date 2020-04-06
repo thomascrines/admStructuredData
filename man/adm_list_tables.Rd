@@ -12,7 +12,7 @@ adm_list_tables(database, server)
 \item{server}{\code{string}. A SQL Server database server.}
 }
 \value{
-\code{null}
+\code{dataframe}
 }
 \description{
 \code{adm_list_tables} lists all base tables in a SQL Server database on a specified server.

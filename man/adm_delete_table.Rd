@@ -2,7 +2,7 @@
 % Please edit documentation in R/adm_delete_table.R
 \name{adm_delete_table}
 \alias{adm_delete_table}
-\title{Delete database table}
+\title{Delete a table in the 'dbo' schema from a database}
 \usage{
 adm_delete_table(database, server, table)
 }
