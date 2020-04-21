@@ -170,6 +170,13 @@ To return a complete dataset from an existing version:
 `adm_import_version(database = "DatabaseName", server = "ServerName",
 version_description = "The description given to this version")`
 
+### Rename a database table
+
+To change the name of a table in the database:
+
+`adm_rename_table(database = "DatabaseName", server = "ServerName",
+current_name = "CurrentTableName", new_name = "NewTableName")`
+
 ## Future Development
 
 This package is currently under active development; feel free to add
