@@ -10,7 +10,7 @@ adm_upload_workbook(
   file_path,
   append = FALSE,
   overwrite = FALSE,
-  archive_directory_path = NULL
+  archive = NULL
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ adm_upload_workbook(
 
 \item{overwrite}{\code{string}. Default: \code{false}. Whether to overwrite existing tables with worksheets with the same name.}
 
-\item{archive_directory_path}{\code{string}. Optional. The path of the directory to move the processed file to.}
+\item{archive}{\code{string}. Optional. The path of the directory to move the processed file to.}
 }
 \value{
 \code{null}
@@ -38,7 +38,7 @@ adm_upload_workbook(
 adm_upload_workbook(database = "DatabaseName", server = "ServerName\\\\Instance", file_path = "C:\\\\Temp\\\\ExcelFile.xlsx")
 }
 \dontrun{
-adm_upload_workbook(database = "DatabaseName", server = "ServerName\\\\Instance"file_path = "C:\\\\Temp\\\\ExcelFile.xlsx", archive_directory_path = "C:\\\\ArchiveFolder\\\\")
+adm_upload_workbook(database = "DatabaseName", server = "ServerName\\\\Instance"file_path = "C:\\\\Temp\\\\ExcelFile.xlsx", archive = "C:\\\\ArchiveFolder\\\\")
 }
 
 }

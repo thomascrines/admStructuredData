@@ -10,7 +10,7 @@ adm_upload_folder(
   source_directory_path,
   append = FALSE,
   overwrite = FALSE,
-  archive_directory_path = NULL
+  archive = NULL
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ adm_upload_folder(
 
 \item{overwrite}{\code{string}. Default: \code{false}. Whether to overwrite existing tables with worksheets with the same name.}
 
-\item{archive_directory_path}{\code{string}. The path of the directory to send processed files to.}
+\item{archive}{\code{string}. The path of the directory to send processed files to.}
 }
 \value{
 \code{null}
@@ -38,7 +38,7 @@ adm_upload_folder(
 adm_upload_folder(database = "DatabaseName", server = "ServerName\\\\Instance", file_path = "C:\\\\Temp\\\\ExcelFile.xlsx")
 }
 \dontrun{
-adm_upload_folder(database = "DatabaseName", server = "ServerName\\\\Instance", file_path = "C:\\\\Temp\\\\ExcelFile.xlsx", archive_directory_path = "C:\\\\ArchiveFolder\\\\")
+adm_upload_folder(database = "DatabaseName", server = "ServerName\\\\Instance", file_path = "C:\\\\Temp\\\\ExcelFile.xlsx", archive = "C:\\\\ArchiveFolder\\\\")
 }
 
 }
