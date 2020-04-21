@@ -7,7 +7,7 @@
 #' @param source_directory_path \code{string}. The path of the directory containing Excel files.
 #' @param append \code{string}. Default: \code{false}. Whether to append worksheets to existing tables with the same name.
 #' @param overwrite \code{string}. Default: \code{false}. Whether to overwrite existing tables with worksheets with the same name.
-#' @param archive_directory_path \code{string}. The path of the directory to send processed files to.
+#' @param archive \code{string}. The path of the directory to send processed files to.
 #'
 #' @return \code{null}
 #'
@@ -17,12 +17,12 @@
 #' adm_upload_folder(database = "DatabaseName", server = "ServerName\\Instance", file_path = "C:\\Temp\\ExcelFile.xlsx")
 #' }
 #' \dontrun{
-#' adm_upload_folder(database = "DatabaseName", server = "ServerName\\Instance", file_path = "C:\\Temp\\ExcelFile.xlsx", archive_directory_path = "C:\\ArchiveFolder\\")
+#' adm_upload_folder(database = "DatabaseName", server = "ServerName\\Instance", file_path = "C:\\Temp\\ExcelFile.xlsx", archive = "C:\\ArchiveFolder\\")
 #' }
 #'
 #' @export
 
-adm_upload_folder <- function(database, server, source_directory_path, append = FALSE, overwrite = FALSE, archive_directory_path = NULL) {
+adm_upload_folder <- function(database, server, source_directory_path, append = FALSE, overwrite = FALSE, archive = NULL) {
 
   files <- admStructuredData:::adm_i_list_files(source_directory_path)
 
@@ -30,7 +30,7 @@ adm_upload_folder <- function(database, server, source_directory_path, append = 
 
     file_path <- file.path(source_directory_path, file)
 
-    admStructuredData::adm_upload_workbook(database = database, server = server, file_path = file_path, append = append, overwrite = overwrite, archive_directory_path = archive_directory_path)
+    admStructuredData::adm_upload_workbook(database = database, server = server, file_path = file_path, append = append, overwrite = overwrite, archive = archive)
 
     }
 

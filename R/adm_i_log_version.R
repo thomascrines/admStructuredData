@@ -28,7 +28,7 @@ adm_i_log_version <- function(database, server, version_description, version_tab
     version_tables_string <- paste0(version_tables_string, version_table, ";")
   }
 
-  sql <- paste0("INSERT INTO [metadata].[versions] ([Description], [Tables]) VALUES ('", version_description, "', '", version_tables_string, "')")
+  sql <- paste0("INSERT INTO [metadata].[versions] ([ID], [Description], [Tables]) VALUES (NEWID(), '", version_description, "', '", version_tables_string, "')")
 
   admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = FALSE)
 

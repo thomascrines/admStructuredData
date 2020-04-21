@@ -25,6 +25,23 @@ adm_create_version <- function(database, server, version_description, version_ta
 
   staging_tables <- database_tables[database_tables$TableType == "Staging",]$Name
 
+  sql <- paste0("SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_CATALOG = '", database,
+                "' AND TABLE_SCHEMA = 'metadata' and TABLE_NAME = 'Versions';")
+
+  version_table <- admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = TRUE)
+
+  if (nrow(version_table) == 0) {
+
+    admStructuredData:::adm_i_create_version_log_table(database = database, server = server)
+    }
+
+  if (is.null(version_tables)) {
+
+    version_tables <- admStructuredData::adm_list_tables(database = database, server = server)
+
+    version_tables <- version_tables[version_tables$TableType == "Staging",]$Name
+    }
+
   admStructuredData:::adm_i_log_version(database = database, server = server, version_description = version_description, version_tables = version_tables)
 
   for (version_table in version_tables) {

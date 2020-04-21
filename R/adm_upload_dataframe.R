@@ -23,9 +23,20 @@ adm_upload_dataframe <- function(database, server, table, dataframe, overwrite =
 
   connection <- admStructuredData:::adm_i_create_connection(database = database, server = server)
 
+  tables <- admStructuredData::adm_list_tables(database = database, server = server)
+
+  if (nrow(tables[tables$Schema == "dbo" & tables$Name == table,]) == 0) {
+
+    admStructuredData:::adm_i_create_table(database = database, server = server, table = table, dataframe = dataframe)
+
+    overwrite = TRUE
+
+    }
+
   tryCatch({
 
     DBI::dbWriteTable(connection, name = table, value = dataframe, overwrite = overwrite, append = append)
+
     message(paste0("Dataframe successfully written to: '", table, "'"))
 
   }, error = function(cond) {

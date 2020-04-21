@@ -7,7 +7,7 @@
 #' @param file_path \code{string}. The full path of the file to process.
 #' @param append \code{string}. Default: \code{false}. Whether to append worksheets to existing tables with the same name.
 #' @param overwrite \code{string}. Default: \code{false}. Whether to overwrite existing tables with worksheets with the same name.
-#' @param archive_directory_path \code{string}. Optional. The path of the directory to move the processed file to.
+#' @param archive \code{string}. Optional. The path of the directory to move the processed file to.
 
 #'
 #' @return \code{null}
@@ -18,12 +18,12 @@
 #' adm_upload_workbook(database = "DatabaseName", server = "ServerName\\Instance", file_path = "C:\\Temp\\ExcelFile.xlsx")
 #' }
 #' \dontrun{
-#' adm_upload_workbook(database = "DatabaseName", server = "ServerName\\Instance"file_path = "C:\\Temp\\ExcelFile.xlsx", archive_directory_path = "C:\\ArchiveFolder\\")
+#' adm_upload_workbook(database = "DatabaseName", server = "ServerName\\Instance"file_path = "C:\\Temp\\ExcelFile.xlsx", archive = "C:\\ArchiveFolder\\")
 #' }
 #'
 #' @export
 
-adm_upload_workbook <- function(database, server, file_path, append = FALSE, overwrite = FALSE, archive_directory_path = NULL) {
+adm_upload_workbook <- function(database, server, file_path, append = FALSE, overwrite = FALSE, archive = NULL) {
 
   file_name <- basename(file_path)
   source <- dirname(file_path)
@@ -40,10 +40,10 @@ adm_upload_workbook <- function(database, server, file_path, append = FALSE, ove
 
   message(paste0("'", file_name, "' successfully processed"))
 
-  if (is.null(archive_directory_path) == FALSE) {
+  if (is.null(archive) == FALSE) {
 
-    admStructuredData:::adm_i_archive_file(file_path = file_path, archive_directory_path = archive_directory_path)
+    admStructuredData:::adm_i_archive_file(file_path = file_path, archive = archive)
 
-    message(paste0("'", file_name, "' moved from: '", source, "' to: '", archive_directory_path, "'\n"))
+    message(paste0("'", file_name, "' moved from: '", source, "' to: '", archive, "'\n"))
   }
 }
