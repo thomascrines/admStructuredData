@@ -20,11 +20,11 @@
 adm_rename_table <- function(database, server, current_name, new_name) {
 
   tables <- admStructuredData::adm_list_tables(database, server)
-  tables <- tables[tables$Name == current_name,]
+  tables <- tables[tables$Name == current_name, ]
 
-  for (row in 1:nrow(tables)) {
+  for (row in seq_len(nrow(tables))) {
 
-    schema <- tables[row,]$Schema
+    schema <- tables[row, ]$Schema
 
     if (schema == "dbo") {
 

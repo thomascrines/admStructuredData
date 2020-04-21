@@ -24,12 +24,12 @@ adm_i_create_temporal_table <- function(database, server, table) {
 
   sql <- paste0("CREATE TABLE [vsn].[", table, "] (", table, "ID INT NOT NULL IDENTITY PRIMARY KEY,")
 
-  for (row in 1:nrow(metadata)) {
+  for (row in seq_len(nrow(metadata))) {
 
-    columnName <- metadata[row, "ColumnName"]
-    dataType <- metadata[row, "DataType"]
+    column_name <- metadata[row, "ColumnName"]
+    data_type <- metadata[row, "DataType"]
 
-    sql <- paste0(sql, " [", columnName, "] ", dataType, ", ")
+    sql <- paste0(sql, " [", column_name, "] ", data_type, ", ")
   }
 
   sql <- paste0(sql,

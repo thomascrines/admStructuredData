@@ -27,7 +27,5 @@ adm_i_create_not_exists_schema <- function(database, server, schema) {
                 EXEC('CREATE SCHEMA [", schema, "]');
                 END")
 
-  # print(sql)
-
   admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = FALSE)
 }

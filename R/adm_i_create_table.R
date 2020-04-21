@@ -26,16 +26,15 @@ adm_i_create_table <- function(database, server, table, dataframe) {
 
   sql <- paste0("CREATE TABLE [dbo].[", table, "] (", table, "ID INT NOT NULL IDENTITY PRIMARY KEY,")
 
-  for (column in 1:length(column_types)) {
+  for (column in seq_len(length(column_types))) {
 
-    columnName <- column_names[column]
-    dataType <- admStructuredData:::adm_i_r_to_sql_data_type(column_types[column])
+    column_name <- column_names[column]
+    data_type <- admStructuredData:::adm_i_r_to_sql_data_type(column_types[column])
 
-    sql <- paste0(sql, " [", columnName, "] ", dataType, ", ")
+    sql <- paste0(sql, " [", column_name, "] ", data_type, ", ")
   }
 
   sql <- paste0(substr(sql, 1, nchar(sql) - 2), ");")
-
 
   admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = FALSE)
 }
