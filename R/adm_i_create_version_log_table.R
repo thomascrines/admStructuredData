@@ -19,7 +19,7 @@
 
 adm_i_create_version_log_table <- function(database, server) {
 
-  sql <- "CREATE TABLE [metadata].[Versions](
+  sql <- "CREATE TABLE [mta].[Versions](
   [ID] [uniqueidentifier] NOT NULL,
   [Description] [varchar](255) NOT NULL,
   [Tables] [varchar](500) NOT NULL,

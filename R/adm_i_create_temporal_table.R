@@ -22,21 +22,21 @@ adm_i_create_temporal_table <- function(database, server, table) {
 
   metadata <- admStructuredData::adm_metadata_columns(database = database, server = server, table = table)
 
-  sql <- paste0("CREATE TABLE [ver].[", table, "] (", table, "ID INT NOT NULL IDENTITY PRIMARY KEY,")
+  sql <- paste0("CREATE TABLE [vsn].[", table, "] (", table, "ID INT NOT NULL IDENTITY PRIMARY KEY,")
 
-  for (row in seq_len(nrow(metadata))) {
+  for (row in 1:nrow(metadata)) {
 
-    column_name <- metadata[row, "ColumnName"]
-    data_type <- metadata[row, "DataType"]
+    columnName <- metadata[row, "ColumnName"]
+    dataType <- metadata[row, "DataType"]
 
-    sql <- paste0(sql, " [", column_name, "] ", data_type, ", ")
+    sql <- paste0(sql, " [", columnName, "] ", dataType, ", ")
   }
 
   sql <- paste0(sql,
                 "SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL, ",
                 "SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL, ",
                 "PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)) ",
-                "WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [ver].[", table, "History]));")
+                "WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [vsn].[", table, "History]));")
 
   connection <- admStructuredData:::adm_i_create_connection(database = database, server = server)
 

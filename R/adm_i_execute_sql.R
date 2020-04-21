@@ -21,13 +21,13 @@
 
 adm_i_execute_sql <- function(database, server, sql, output = FALSE) {
 
-  output_data <- NULL
+  outputData <- NULL
 
   connection <- admStructuredData:::adm_i_create_connection(database = database, server = server)
 
   if (output == TRUE) {
 
-    output_data <- DBI::dbGetQuery(connection, sql)
+    outputData <- DBI::dbGetQuery(connection, sql)
 
   } else {
 
@@ -36,6 +36,6 @@ adm_i_execute_sql <- function(database, server, sql, output = FALSE) {
 
   DBI::dbDisconnect(connection)
 
-  output_data
+  outputData
 
 }

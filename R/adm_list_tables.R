@@ -24,7 +24,7 @@ adm_list_tables <- function(database, server) {
   WHEN t.temporal_type = 2 THEN 'Version'
   END AS 'TableType'
   FROM sys.tables t
-  WHERE t.temporal_type != 1 AND SCHEMA_NAME(t.schema_id) != 'metadata'"
+  WHERE t.temporal_type != 1 AND SCHEMA_NAME(t.schema_id) != 'mta'"
 
   data <- admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = TRUE)
 

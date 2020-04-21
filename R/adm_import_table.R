@@ -36,7 +36,7 @@ adm_import_table <- function(database, server, table, version = FALSE, date = NU
     sql <- paste0(substr(sql, 1, nchar(sql) - 1), " FOR SYSTEM_TIME AS OF '", date, "'")
   }
 
-  data <- admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = TRUE)
+  data <- admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = TRUE )
 
   data
 }

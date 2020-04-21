@@ -17,16 +17,20 @@
 #'
 #' @export
 
-adm_create_version <- function(database, server, version_description, version_tables) {
+adm_create_version <- function(database, server, version_description, version_tables = NULL) {
+
+  admStructuredData:::adm_i_create_not_exists_schema(database = database, server = server, schema = "mta")
+
+  admStructuredData:::adm_i_create_not_exists_schema(database = database, server = server, schema = "vsn")
 
   database_tables <- admStructuredData::adm_list_tables(database = database, server = server)
 
-  temporal_tables <- database_tables[database_tables$TableType == "Version", ]$Name
+  temporal_tables <- database_tables[database_tables$TableType == "Version",]$Name
 
-  staging_tables <- database_tables[database_tables$TableType == "Staging", ]$Name
+  staging_tables <- database_tables[database_tables$TableType == "Staging",]$Name
 
   sql <- paste0("SELECT * FROM INFORMATION_SCHEMA.TABLES where TABLE_CATALOG = '", database,
-                "' AND TABLE_SCHEMA = 'metadata' and TABLE_NAME = 'Versions';")
+                "' AND TABLE_SCHEMA = 'mta' and TABLE_NAME = 'Versions';")
 
   version_table <- admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = TRUE)
 
@@ -39,7 +43,7 @@ adm_create_version <- function(database, server, version_description, version_ta
 
     version_tables <- admStructuredData::adm_list_tables(database = database, server = server)
 
-    version_tables <- version_tables[version_tables$TableType == "Staging", ]$Name
+    version_tables <- version_tables[version_tables$TableType == "Staging",]$Name
     }
 
   admStructuredData:::adm_i_log_version(database = database, server = server, version_description = version_description, version_tables = version_tables)
@@ -48,7 +52,7 @@ adm_create_version <- function(database, server, version_description, version_ta
 
     if (version_table %in% temporal_tables) {
 
-      sql <- paste0("DELETE FROM [ver].[", version_table, "];")
+      sql <- paste0("DELETE FROM [vsn].[", version_table, "];")
 
       admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = FALSE)
 
@@ -60,7 +64,7 @@ adm_create_version <- function(database, server, version_description, version_ta
     admStructuredData:::adm_i_populate_temporal_table(database = database, server = server, table = version_table)
   }
 
-  sql <- paste0("UPDATE [metadata].[Versions] SET [Date] = GETUTCDATE() WHERE Description = '", version_description, "';")
+  sql <- paste0("UPDATE [mta].[Versions] SET [Date] = GETUTCDATE() WHERE Description = '", version_description, "';")
 
   admStructuredData:::adm_i_execute_sql(database = database, server = server, sql = sql, output = FALSE)
 
