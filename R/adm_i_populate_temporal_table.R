@@ -25,14 +25,14 @@ adm_i_populate_temporal_table <- function(database, server, table) {
 
   column_string <- ""
 
-  for (row in 1:nrow(metadata)) {
+  for (row in seq_len(nrow(metadata))) {
 
     column_name <- metadata[row, 1]
 
     column_string <- paste0(column_string, " [", column_name, "], ")
   }
 
-  column_string <- substr(column_string, 1, nchar(column_string) -2)
+  column_string <- substr(column_string, 1, nchar(column_string) - 2)
 
   sql <- paste0("INSERT INTO [ver].[", table, "] (", column_string, ") select ", column_string, " from [dbo].[", table, "];")
 

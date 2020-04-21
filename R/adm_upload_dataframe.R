@@ -25,11 +25,11 @@ adm_upload_dataframe <- function(database, server, table, dataframe, overwrite =
 
   tables <- admStructuredData::adm_list_tables(database = database, server = server)
 
-  if (nrow(tables[tables$Schema == "dbo" & tables$Name == table,]) == 0) {
+  if (nrow(tables[tables$Schema == "dbo" & tables$Name == table, ]) == 0) {
 
     admStructuredData:::adm_i_create_table(database = database, server = server, table = table, dataframe = dataframe)
 
-    overwrite = TRUE
+    overwrite <- TRUE
 
     }
 
